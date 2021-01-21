@@ -21,15 +21,11 @@ export const HomeScreen = () => {
   const [weatherData, setWeatherData] = useState(null);
   useEffect(() => {
     (async () => {
-      try {
-        const weatherForCph = await getWeatherByCityName("Copenhagen");
-        setWeatherData(weatherForCph);
-      } catch (error) {
-        console.log(error);
-      }
+      const weatherForCph = await getWeatherByCityName("Copenhagen");
+      setWeatherData(weatherForCph);
     })();
   }, []);
-  console.log(weatherData);
+  //console.log(weatherData);
 
   const rawTimeStamp = `${weatherData?.dt}`;
   const dateinmillisec = new Date(rawTimeStamp * 1000);
