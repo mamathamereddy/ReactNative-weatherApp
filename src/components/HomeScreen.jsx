@@ -42,18 +42,7 @@ export const HomeScreen = () => {
             </View>
             <View style={styles.navBarIcons}>
               <TextInput
-                style={{
-                  height: 30,
-                  color: "black",
-                  fontSize: 22,
-                  fontFamily: "Helvetica Neue",
-                  fontWeight: "100",
-                  minWidth: 250,
-                  paddingLeft: 20,
-                  backgroundColor: "#eeefdc",
-                  borderWidth: 1,
-                  borderColor: "black",
-                }}
+                style={styles.textInput}
                 autoCapitalize="none"
                 autoCorrect={false}
                 value={currentCity}
@@ -144,6 +133,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     margin: 15,
+  },
+  textInput: {
+    height: 30,
+    color: "black",
+    fontSize: 22,
+    fontFamily: "Helvetica Neue",
+    fontWeight: "100",
+    minWidth: 250,
+    paddingLeft: 20,
+    backgroundColor: "#eeefdc",
+    borderWidth: 1,
+    borderColor: "black",
   },
 
   displayContainer: {
