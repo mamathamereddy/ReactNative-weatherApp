@@ -7,13 +7,8 @@ import {
   StyleSheet,
   ImageBackground,
 } from "react-native";
-import {
-  MaterialCommunityIcons,
-  Fontisto,
-  FontAwesome,
-  FontAwesome5,
-  SimpleLineIcons,
-} from "@expo/vector-icons";
+
+import Icon from "./Icon";
 
 import { getWeatherByCityName } from "../servises/index";
 
@@ -39,8 +34,8 @@ export const HomeScreen = () => {
           source={require("../../assets/weather.jpg")}
         >
           <View style={styles.navBarIcons}>
-            <MaterialCommunityIcons name="hamburger" size={22} color="black" />
-            <FontAwesome name="search" size={22} color="black" />
+            <Icon iconFamily="MA" name="hamburger" size={22} />
+            <Icon iconFamily="FA5" name="search" size={22} />
           </View>
 
           <View style={styles.displayContainer}>
@@ -73,14 +68,14 @@ export const HomeScreen = () => {
 
       <View style={styles.descriptionContainer}>
         <View style={styles.displayTempIcons}>
-          <FontAwesome5 name="temperature-low" size={38} color="black" />
+          <Icon iconFamily="FA" name="temperature-low" size={38} />
           <View style={styles.forecast}>
             <Text style={styles.text}>Feels Like</Text>
             <Text style={styles.display}>
               {(`${weatherData?.main?.feels_like}` - 273.15).toFixed(0)}℃
             </Text>
           </View>
-          <SimpleLineIcons name="drop" size={28} color="black" />
+          <Icon iconFamily="SI" name="drop" />
           <View style={styles.forecast}>
             <Text style={styles.text}>Humidity</Text>
             <Text style={styles.display}>
@@ -89,18 +84,14 @@ export const HomeScreen = () => {
           </View>
         </View>
         <View style={styles.displayTempIcons}>
-          <MaterialCommunityIcons
-            name="weather-windy"
-            size={28}
-            color="black"
-          />
+          <Icon iconFamily="MA" name="weather-windy" />
           <View style={styles.forecast}>
             <Text style={styles.text}>Wind</Text>
             <Text style={styles.display}>
               {`${weatherData?.wind?.speed}`}km/h
             </Text>
           </View>
-          <Fontisto name="day-sunny" size={28} color="black" />
+          <Icon iconFamily="FE" name="sun" />
           <View style={styles.forecast}>
             <Text style={styles.text}>UV Index</Text>
           </View>
