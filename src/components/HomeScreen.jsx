@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   StyleSheet,
   ImageBackground,
+  TextInput,
 } from "react-native";
 
 import Icon from "./Icon";
@@ -13,13 +14,15 @@ import Icon from "./Icon";
 import { getWeatherByCityName } from "../servises/index";
 
 export const HomeScreen = () => {
+  const [currentCity, setCurrentCity] = useState("copenhagen");
   const [weatherData, setWeatherData] = useState(null);
+
   useEffect(() => {
     (async () => {
-      const weatherForCph = await getWeatherByCityName("Copenhagen");
+      const weatherForCph = await getWeatherByCityName(currentCity);
       setWeatherData(weatherForCph);
     })();
-  }, []);
+  }, [currentCity]);
   //console.log(weatherData);
 
   const rawTimeStamp = `${weatherData?.dt}`;
@@ -34,8 +37,34 @@ export const HomeScreen = () => {
           source={require("../../assets/weather.jpg")}
         >
           <View style={styles.navBarIcons}>
-            <Icon iconFamily="MA" name="hamburger" size={22} />
-            <Icon iconFamily="FA5" name="search" size={22} />
+            <View style={styles.navBarIcons}>
+              <Icon iconFamily="MA" name="hamburger" size={28} />
+            </View>
+            <View style={styles.navBarIcons}>
+              <TextInput
+                style={{
+                  height: 30,
+                  color: "black",
+                  fontSize: 22,
+                  fontFamily: "Helvetica Neue",
+                  fontWeight: "100",
+                  minWidth: 250,
+                  paddingLeft: 20,
+                  backgroundColor: "#eeefdc",
+                  borderWidth: 1,
+                  borderColor: "black",
+                }}
+                autoCapitalize="none"
+                autoCorrect={false}
+                value={currentCity}
+                clearTextOnFocus
+                onChangeText={setCurrentCity}
+                placeholder={"Type location name"}
+                placeholderTextColor="black"
+                textAlign="center"
+              />
+              <Icon iconFamily="FA5" name="search" size={28} />
+            </View>
           </View>
 
           <View style={styles.displayContainer}>
