@@ -1,5 +1,5 @@
-const token = 'f9d2be6af465b2eb9554747c44c88614';
-const url = 'https://api.openweathermap.org/data/2.5/weather';
+const token = "e905e31d0f351236265a912ae9977a0b";
+const url = "https://api.openweathermap.org/data/2.5/weather";
 const responseConf = async (response) => {
   if (!response.ok) {
     const message = `An error has ocurred: ${response.status}`;
@@ -11,7 +11,7 @@ const responseConf = async (response) => {
 };
 export const getWeatherByCityName = async (city) => {
   if (!city) {
-    throw new Error('You need to provide city');
+    throw new Error("You need to provide city");
   }
   const response = await fetch(`${url}?q=${city}&APPID=${token}`);
 
@@ -20,7 +20,7 @@ export const getWeatherByCityName = async (city) => {
 
 export const getWeatherByCityID = async (id) => {
   if (!id) {
-    throw new Error('You need to provide id');
+    throw new Error("You need to provide id");
   }
   const response = await fetch(`${url}?id=${id}&APPID=${token}`);
 
@@ -30,17 +30,19 @@ export const getWeatherByCityID = async (id) => {
 //example: api.openweathermap.org/data/2.5/weather?zip=94040,us&appid={API key}
 export const getWeatherByZip = async (zip, country) => {
   if (!zip && !country) {
-    throw new Error('You need to provide zip and country');
+    throw new Error("You need to provide zip and country");
   }
   const response = await fetch(`${url}?zip=${zip},${country}&APPID=${token}`);
 
   return responseConf(response);
 };
 
-export const forecastFor7days = async(lat,lon) => {
+export const forecastFor7days = async (lat, lon) => {
   if (!lat && !lon) {
-    throw new Error('You need to provide city');
+    throw new Error("You need to provide city");
   }
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}.441792&lon=${lon}&exclude=hourly,daily&appid=${token}`);
+  const response = await fetch(
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}.441792&lon=${lon}&exclude=hourly,daily&appid=${token}`
+  );
   return responseConf(response);
-}
+};
