@@ -1,149 +1,95 @@
-import React, { useState, useEffect, useContext } from "react";
-import {
-  Text,
-  View,
-  SafeAreaView,
-  StyleSheet,
-  ImageBackground,
-} from "react-native";
+import React from "react";
+import { StyleSheet, Text, View, Image } from "react-native";
+import AdditionalInfo from "./AdditionalInfo";
 
-import DelayInput from "react-native-debounce-input";
-
-import Icon from "./Icon";
-import WeatherDetails from "./WeatherDetails";
-
-import { getWeatherByCityName } from "../servises/index";
-import { LocationContext } from "../contex/LocationContex";
-
-export const HomeScreen = () => {
-  const { currentCity, setCurrentCity } = useContext(LocationContext);
-  const { setLat, setLon } = useContext(LocationContext);
-  const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState("");
-  console.log(currentCity);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const weatherForCph = await getWeatherByCityName(currentCity);
-        setLat(weatherForCph.coord.lat);
-        setLon(weatherForCph.coord.lon);
-        setWeatherData(weatherForCph);
-        setError("");
-      } catch (error) {
-        setError("please enter valid city name");
-        console.log(error);
-      }
-    })();
-  }, [currentCity]);
-
+const WeatherDetails = ({ weatherData }) => {
+  const rawTimeStamp = `${weatherData?.dt}`;
+  const dateinmillisec = new Date(rawTimeStamp * 1000);
+  const date = new Date(dateinmillisec).toDateString();
   return (
-    <SafeAreaView style={styles.androidSafeArea}>
-      <ImageBackground
-        style={styles.backgroundImage}
-        // source={require("../../assets/sky.gif")}
-        source={{
-          uri: "https://gfycat.com/brownillegalchafer",
-        }}
-      >
-        <View style={styles.container1}>
-          <View style={styles.headerContainer}>
-            <Icon
-              iconFamily="MA"
-              name="hamburger"
-              size={25}
-              color="lightblue"
-            />
-            <DelayInput
-              style={styles.textInput}
-              autoCapitalize="none"
-              clearButtonMode="while-editing"
-              autoCorrect={false}
-              value={currentCity}
-              clearTextOnFocus
-              onChangeText={setCurrentCity}
-              delayTimeout={500}
-              placeholder={"Type location name"}
-              placeholderTextColor="black"
-              textAlign="center"
-            />
-            <Icon iconFamily="FA5" name="search" color="lightblue" />
-          </View>
-          {error ? (
-            <Text
-              style={{
-                color: "red",
-                fontSize: 20,
-                padding: 60,
-              }}
-            >
-              {error}
-            </Text>
-          ) : (
-            <WeatherDetails weatherData={weatherData} />
-          )}
-        </View>
-      </ImageBackground>
-    </SafeAreaView>
+    <>
+      <View style={styles.detailsContainer}>
+        <Text style={{ color: "lightblue" }}>{`${date}`}</Text>
+        <Text
+          style={{
+            color: "#fff",
+            fontSize: 28,
+
+            fontWeight: "300",
+          }}
+        >{`${weatherData?.name}`}</Text>
+        <Text
+          style={{
+            color: "#fff",
+            fontSize: 20,
+
+            fontWeight: "300",
+          }}
+        >{`${weatherData?.weather[0]?.description}`}</Text>
+
+        <Image
+          style={styles.descriptionImage}
+          source={{
+            uri: `http://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@4x.png`,
+          }}
+        />
+        <Text
+          style={{
+            color: "#fff",
+            fontSize: 30,
+
+            fontWeight: "300",
+          }}
+        >
+          {(`${weatherData?.main?.temp}` - 273.15).toFixed(0)}&#8451;
+        </Text>
+      </View>
+      <View style={styles.descriptionContainer}>
+        <AdditionalInfo
+          text="Humidity"
+          temperature={`${weatherData?.main?.humidity}`}
+        />
+        <AdditionalInfo
+          text="Feels-Like"
+          temperature={(`${weatherData?.main?.feels_like}` - 273.15).toFixed(0)}
+          degre
+        />
+        <AdditionalInfo
+          text="Wind"
+          temperature={`${weatherData?.wind?.speed}`}
+        />
+        <AdditionalInfo text="UV-index" />
+      </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  androidSafeArea: {
-    paddingTop: Platform.OS === "android" ? 25 : 0,
-    flex: 1,
-  },
-  backgroundImage: {
-    flex: 1,
-    resizeMode: "cover",
-  },
-  container1: {
-    flex: 1,
-    alignItems: "flex-start",
+  detailsContainer: {
+    alignItems: "center",
     color: "#fff",
-    justifyContent: "flex-start",
-    backgroundColor: "#19b0e3",
+    justifyContent: "flex-end",
+    marginTop: 30,
+    width: "100%",
   },
-  headerContainer: {
+  descriptionImage: {
+    width: 150,
+    height: 150,
+
+    padding: null,
+    margin: null,
+  },
+  descriptionContainer: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    paddingTop: 10,
-    marginLeft: 10,
-  },
-  textInput: {
-    height: 30,
-    color: "black",
-    fontSize: 22,
-    fontFamily: "Helvetica Neue",
-    fontWeight: "100",
-    minWidth: 250,
-    paddingLeft: 20,
-    borderWidth: 1,
-    borderColor: "#19b0e3",
-    marginLeft: 60,
+    alignContent: "center",
+    justifyContent: "flex-start",
+    marginTop: 50,
+    backgroundColor: "gray",
+    flex: 1,
+    flexWrap: "wrap",
   },
 });
-
-//  <View style={styles.navBarIcons}>
-//             <View style={styles.navBarIcons}>
-//               <Icon iconFamily="MA" name="hamburger" size={28} />
-//             </View>
-//             <View style={styles.searchbar}>
-//               <DelayInput
-//                 style={styles.textInput}
-//                 autoCapitalize="none"
-//                 autoCorrect={false}
-//                 value={currentCity}
-//                 clearTextOnFocus
-//                 onChangeText={setCurrentCity}
-//                 delayTimeout={500}
-//                 placeholder={"Type location name"}
-//                 placeholderTextColor="black"
-//                 textAlign="center"
-//               />
-//               <Icon iconFamily="FA5" name="search" size={28} />
-
-//           </View>
+export default WeatherDetails;
 
 //            <View style={styles.displayContainer}>
 //             <View style={{ flexDirection: "column" }}>
