@@ -44,19 +44,23 @@ const WeatherDetails = ({ weatherData }) => {
           {(`${weatherData?.main?.temp}` - 273.15).toFixed(0)}&#8451;
         </Text>
       </View>
+
       <View style={styles.descriptionContainer}>
-        <AdditionalInfo
-          text="Humidity"
-          temperature={`${weatherData?.main?.humidity}`}
-        />
         <AdditionalInfo
           text="Feels-Like"
           temperature={(`${weatherData?.main?.feels_like}` - 273.15).toFixed(0)}
-          degre
+          units="℃"
         />
+        <AdditionalInfo
+          text="Humidity"
+          temperature={`${weatherData?.main?.humidity}`}
+          units="%"
+        />
+
         <AdditionalInfo
           text="Wind"
           temperature={`${weatherData?.wind?.speed}`}
+          units="km/ph"
         />
         <AdditionalInfo text="UV-index" />
       </View>

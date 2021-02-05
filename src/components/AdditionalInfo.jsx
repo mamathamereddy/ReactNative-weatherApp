@@ -2,13 +2,16 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Icon from "./Icon";
 
-const AdditionalInfo = ({ text, temperature }) => {
+const AdditionalInfo = ({ text, temperature, units }) => {
   return (
     <View style={{ padding: 12, marginLeft: 35, flexDirection: "row" }}>
       <Icon iconFamily="FA" name="temperature-low" size={38} />
       <View style={{ padding: 7 }}>
-        <Text style={styles.text}>{text}</Text>
-        <Text style={styles.display}>{temperature}</Text>
+        <Text>{text}</Text>
+        <Text>
+          {temperature}
+          {units}
+        </Text>
       </View>
     </View>
   );
