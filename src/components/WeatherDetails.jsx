@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
+
 import AdditionalInfo from "./AdditionalInfo";
-import Icon from "./Icon";
 
 const WeatherDetails = ({ weatherData }) => {
   const rawTimeStamp = `${weatherData?.dt}`;
@@ -25,8 +25,12 @@ const WeatherDetails = ({ weatherData }) => {
         <Text style={styles.text}>
           {(`${weatherData?.main?.temp}` - 273.15).toFixed(0)}&#8451;
         </Text>
+        <Text style={{ fontSize: 15, padding: 10, color: "#ffff" }}>
+          H:{(`${weatherData?.main?.temp_max}` - 273.15).toFixed(0)}&#8451;
+          {""} {""} {""} {""} {""}
+          L:{(`${weatherData?.main?.temp_min}` - 273.15).toFixed(0)}&#8451;
+        </Text>
       </View>
-
       <View style={styles.descriptionContainer}>
         <AdditionalInfo
           text="Feels-Like"
@@ -36,7 +40,6 @@ const WeatherDetails = ({ weatherData }) => {
           name="temperature-low"
           size={25}
         />
-
         <AdditionalInfo
           text="Humidity"
           temperature={`${weatherData?.main?.humidity}`}
@@ -45,7 +48,6 @@ const WeatherDetails = ({ weatherData }) => {
           name="drop"
           size={25}
         />
-
         <AdditionalInfo
           text="Wind"
           temperature={`${weatherData?.wind?.speed}`}
@@ -54,8 +56,14 @@ const WeatherDetails = ({ weatherData }) => {
           name="weather-windy"
           size={25}
         />
-
-        <AdditionalInfo text="UV-index" icon="FE" name="sun" size={25} />
+        <AdditionalInfo
+          text="Pressure"
+          temperature={`${weatherData?.main?.pressure}`}
+          units="km"
+          icon="FE"
+          name="sun"
+          size={25}
+        />
       </View>
     </>
   );

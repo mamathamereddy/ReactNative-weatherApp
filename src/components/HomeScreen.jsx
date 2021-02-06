@@ -36,6 +36,7 @@ export const HomeScreen = () => {
       }
     })();
   }, [currentCity]);
+  //console.log(weatherData);
 
   return (
     <SafeAreaView style={styles.androidSafeArea}>
@@ -67,7 +68,7 @@ export const HomeScreen = () => {
               placeholderTextColor="black"
               textAlign="center"
             />
-            <Icon iconFamily="FA5" name="search" color="lightblue" />
+            <Icon iconFamily="FA5" name="search" color="lightblue" size={20} />
           </View>
           {error ? (
             <Text
