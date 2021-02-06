@@ -41,10 +41,10 @@ export const HomeScreen = () => {
     <SafeAreaView style={styles.androidSafeArea}>
       <ImageBackground
         style={styles.backgroundImage}
-        // source={require("../../assets/sky.gif")}
-        source={{
-          uri: "https://gfycat.com/brownillegalchafer",
-        }}
+        source={require("../../assets/sky.gif")}
+        // source={{
+        //   uri: "https://gfycat.com/brownillegalchafer",
+        // }}
       >
         <View style={styles.container1}>
           <View style={styles.headerContainer}>
@@ -102,7 +102,6 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     color: "#fff",
     justifyContent: "flex-start",
-    backgroundColor: "#19b0e3",
   },
   headerContainer: {
     flexDirection: "row",
@@ -119,7 +118,7 @@ const styles = StyleSheet.create({
     minWidth: 250,
     paddingLeft: 20,
     borderWidth: 1,
-    borderColor: "#19b0e3",
+    borderColor: "#4a81d9",
     marginLeft: 60,
   },
 });

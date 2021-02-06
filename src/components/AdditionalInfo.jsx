@@ -5,10 +5,10 @@ import Icon from "./Icon";
 const AdditionalInfo = ({ text, temperature, units, icon, name, size }) => {
   return (
     <View style={{ padding: 12, marginLeft: 35, flexDirection: "row" }}>
-      <Icon iconFamily={icon} name={name} size={size} color="brown" />
+      <Icon iconFamily={icon} name={name} size={size} color="#ba7111" />
       <View style={{ padding: 7 }}>
-        <Text>{text}</Text>
-        <Text>
+        <Text style={{ fontSize: 19, color: "green" }}>{text}</Text>
+        <Text style={{ fontSize: 19, color: "#ad512d" }}>
           {temperature}
           {units}
         </Text>
