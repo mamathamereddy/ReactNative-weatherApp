@@ -42,7 +42,7 @@ export const forecastFor7days = async (lat, lon) => {
     throw new Error("You need to provide city");
   }
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}.441792&lon=${lon}&exclude=hourly,daily&appid=${token}`
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&appid=${token}`
   );
   return responseConf(response);
 };
