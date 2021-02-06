@@ -2,10 +2,10 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Icon from "./Icon";
 
-const AdditionalInfo = ({ text, temperature, units }) => {
+const AdditionalInfo = ({ text, temperature, units, icon, name, size }) => {
   return (
     <View style={{ padding: 12, marginLeft: 35, flexDirection: "row" }}>
-      <Icon iconFamily="FA" name="temperature-low" size={38} />
+      <Icon iconFamily={icon} name={name} size={size} color="brown" />
       <View style={{ padding: 7 }}>
         <Text>{text}</Text>
         <Text>

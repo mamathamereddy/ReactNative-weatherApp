@@ -7,18 +7,18 @@ import IconSI from "@expo/vector-icons/SimpleLineIcons";
 
 export default function Icon(props) {
   if (props.iconFamily == "FA") {
-    return <IconFA {...props} style={props.style} color="brown" />;
+    return <IconFA {...props} style={props.style} />;
   }
   if (props.iconFamily == "FA5") {
-    return <IconFA5 {...props} style={props.style} size={20} />;
+    return <IconFA5 {...props} style={props.style} />;
   }
   if (props.iconFamily == "MA") {
-    return <IconMA size={28} {...props} style={props.style} />;
+    return <IconMA {...props} style={props.style} />;
   }
   if (props.iconFamily == "FE") {
-    return <IconFE size={28} {...props} style={props.style} color="brown" />;
+    return <IconFE {...props} style={props.style} />;
   }
   if (props.iconFamily == "SI") {
-    return <IconSI size={28} {...props} style={props.style} color="brown" />;
+    return <IconSI {...props} style={props.style} />;
   }
 }
