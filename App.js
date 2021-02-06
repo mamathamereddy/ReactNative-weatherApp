@@ -5,6 +5,7 @@ import { HomeScreen } from "./src/components/HomeScreen";
 import { WeeklyScreen } from "./src/components/WeeklyScreen";
 import { LocationContext } from "./src/contex/LocationContex";
 import { LayoutAnimation } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,9 +19,43 @@ const App = () => {
       <LocationContext.Provider
         value={{ currentCity, setCurrentCity, lat, setLat, lon, setLon }}
       >
-        <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Weekly" component={WeeklyScreen} />
+        <Tab.Navigator
+          tabBarOptions={{
+            labelStyle: { fontSize: 15 },
+            inactiveTintColor: "black",
+            activeTintColor: "#b8610b",
+            inactiveBackgroundColor: "#09325c",
+            activeBackgroundColor: "#429edb",
+          }}
+        >
+          <Tab.Screen
+            name="Today"
+            component={HomeScreen}
+            options={{
+              tabBarLabel: "Today",
+              tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons
+                  name="calendar-today"
+                  size={24}
+                  color="#28782e"
+                />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Weekly"
+            component={WeeklyScreen}
+            options={{
+              tabBarLabel: "Weekly",
+              tabBarIcon: ({ color, size }) => (
+                <MaterialCommunityIcons
+                  name="calendar-week"
+                  size={24}
+                  color="#28782e"
+                />
+              ),
+            }}
+          />
         </Tab.Navigator>
       </LocationContext.Provider>
     </NavigationContainer>
