@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
   icon: {
     flex: 1,
     height: 30,
-    textAlign: "left",
   },
   text: {
     flex: 1,
