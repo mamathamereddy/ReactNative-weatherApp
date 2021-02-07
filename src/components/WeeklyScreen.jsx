@@ -100,31 +100,31 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignContent: "center",
-    padding: 5,
+    padding: 15,
   },
   day: {
-    flex: 1.7,
+    flex: 1.5,
     fontSize: 15,
     textAlign: "left",
     color: "#232363",
   },
   icon: {
     flex: 1,
-    height: 50,
-    marginTop: null,
+    height: 30,
+    textAlign: "left",
   },
   text: {
     flex: 1,
     fontSize: 15,
-    textAlign: "left",
-    padding: 10,
+    textAlign: "center",
+
     color: "#232363",
   },
   temp: {
-    flex: 0.5,
+    flex: 0.6,
     fontSize: 15,
     textAlign: "center",
-    padding: 10,
+
     color: "#232363",
   },
 });
