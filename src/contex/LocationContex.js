@@ -2,11 +2,11 @@ import { createContext } from "react";
 
 export const LocationContext = createContext({
   currentCity: "",
+  lat: null,
+  lon: null,
   setCurrentCity: () => {
     console.log("city");
   },
-  lat: null,
-  lon: null,
   setLat: () => {
     console.log("lat");
   },

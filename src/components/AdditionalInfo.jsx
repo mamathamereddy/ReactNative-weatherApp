@@ -6,7 +6,7 @@ const AdditionalInfo = ({ text, temperature, units, icon, name, size }) => {
   return (
     <View style={{ padding: 12, marginLeft: 35, flexDirection: "row" }}>
       <Icon iconFamily={icon} name={name} size={size} color="#ba7111" />
-      <View style={{ padding: 7 }}>
+      <View style={{ paddingLeft: 10 }}>
         <Text style={{ fontSize: 19, color: "green" }}>{text}</Text>
         <Text style={{ fontSize: 19, color: "#ad512d" }}>
           {temperature}
