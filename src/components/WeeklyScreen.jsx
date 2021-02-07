@@ -77,10 +77,10 @@ export const WeeklyScreen = () => {
                   <Text style={styles.text}>{day.weather[0].main}</Text>
 
                   <Text style={styles.temp}>
-                    {(Math.ceil(day.temp.max) - 273.15).toFixed(0)}
+                    {(day.temp.max - 273.15).toFixed(0)}
                   </Text>
                   <Text style={styles.temp}>
-                    {(Math.ceil(day.temp.min) - 273.15).toFixed(0)}
+                    {(day.temp.min - 273.15).toFixed(0)}
                   </Text>
                 </View>
               );
