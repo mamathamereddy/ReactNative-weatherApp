@@ -9,8 +9,8 @@ import {
 
 import DelayInput from "react-native-debounce-input";
 
-import Icon from "./Icon";
-import WeatherDetails from "./WeatherDetails";
+import Icon from "../screens/Icon";
+import WeatherDetails from "../screens/WeatherDetails";
 
 import { getWeatherByCityName } from "../servises/index";
 import { LocationContext } from "../contex/LocationContex";

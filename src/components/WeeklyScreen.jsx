@@ -49,7 +49,8 @@ export const WeeklyScreen = () => {
             margin: 10,
           }}
         >
-          7 days forecast for {`${data?.timezone}`}
+          7 days forecast
+          {/*  for {`${data?.timezone}`} */}
         </Text>
         <ScrollView>
           {data?.daily &&

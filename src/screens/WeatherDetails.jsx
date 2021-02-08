@@ -31,6 +31,7 @@ const WeatherDetails = ({ weatherData }) => {
           L:{(`${weatherData?.main?.temp_min}` - 273.15).toFixed(0)}&#8451;
         </Text>
       </View>
+
       <View style={styles.descriptionContainer}>
         <AdditionalInfo
           text="Feels-Like"
