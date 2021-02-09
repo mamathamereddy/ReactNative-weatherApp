@@ -13,12 +13,15 @@ import Icon from "../screens/Icon";
 import WeatherDetails from "../screens/WeatherDetails";
 
 import { getWeatherByCityName } from "../servises/index";
+import { forecasthourly } from "../servises/index";
 import { LocationContext } from "../contex/LocationContex";
 
 export const HomeScreen = () => {
   const { currentCity, setCurrentCity } = useContext(LocationContext);
-  const { setLat, setLon } = useContext(LocationContext);
+  const { lat, setLat, lon, setLon } = useContext(LocationContext);
+  const { hourlyData, setHourlyData } = useContext(LocationContext);
   const [weatherData, setWeatherData] = useState(null);
+
   const [error, setError] = useState("");
   console.log(currentCity);
 
@@ -29,6 +32,8 @@ export const HomeScreen = () => {
         setLat(weatherForCph.coord.lat);
         setLon(weatherForCph.coord.lon);
         setWeatherData(weatherForCph);
+        const hourlyForcast = await forecasthourly(lat, lon);
+        setHourlyData(hourlyForcast);
         setError("");
       } catch (error) {
         setError("please enter valid city name");
@@ -36,7 +41,21 @@ export const HomeScreen = () => {
       }
     })();
   }, [currentCity]);
+
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const hourlyForcast = await forecasthourly(lat, lon);
+  //       setHourlyData(hourlyForcast);
+  //       setError("");
+  //     } catch (error) {
+  //       setError("please enter valid city name");
+  //       console.log(error);
+  //     }
+  //   })();
+  // }, [currentCity]);
   //console.log(weatherData);
+  console.log(hourlyData);
 
   return (
     <SafeAreaView style={styles.androidSafeArea}>
