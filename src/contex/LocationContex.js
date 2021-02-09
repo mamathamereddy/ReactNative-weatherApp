@@ -13,4 +13,7 @@ export const LocationContext = createContext({
   setLon: () => {
     console.log("lang");
   },
+  setHourlyData: () => {
+    console.log("data");
+  },
 });
