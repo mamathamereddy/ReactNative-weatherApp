@@ -13,11 +13,21 @@ const App = () => {
   const [currentCity, setCurrentCity] = useState("copenhagen");
   const [lat, setLat] = useState("");
   const [lon, setLon] = useState("");
+  const [hourlyData, setHourlyData] = useState("");
 
   return (
     <NavigationContainer>
       <LocationContext.Provider
-        value={{ currentCity, setCurrentCity, lat, setLat, lon, setLon }}
+        value={{
+          currentCity,
+          setCurrentCity,
+          lat,
+          setLat,
+          lon,
+          setLon,
+          hourlyData,
+          setHourlyData,
+        }}
       >
         <Tab.Navigator
           tabBarOptions={{
