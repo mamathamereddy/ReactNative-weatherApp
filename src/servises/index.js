@@ -46,3 +46,13 @@ export const forecastFor7days = async (lat, lon) => {
   );
   return responseConf(response);
 };
+
+export const forecasthourly = async (lat: string, lon: string) => {
+  if (!lat && !lon) {
+    throw new Error("You need to provide lat and lon");
+  }
+  const response = await fetch(
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=daily,minutely&appid=${token}`
+  );
+  return responseConf(response);
+};
